@@ -1,19 +1,23 @@
-<h1>Active Directory Home Lab</h1>
+<h1 style="color:blue"> Active Directory Home Lab</h1>
 
 
-<h2>Description</h2>
-Project consists of a simple PowerShell script that walks the user through "zeroing out" (wiping) any drives that are connected to the system. The utility allows you to select the target disk and choose the number of passes that are performed. The PowerShell script will configure a diskpart script file based on the user's selections and then launch Diskpart to perform the disk sanitization.
-<br />
+<h3>Resources Used</h3>
+<ul type="circle">
+ <li>Oracle Virtual Box</li>
+ <li>Windows 10 ISO</li>
+ <li>Windows server 2019 ISO</li>
+ <li>PowerShell Script</li>
+</ul>
 
 
-<h2>Languages and Utilities Used</h2>
+<h3>Overview</h3>
+Create a home lab set up with an active running directory utilizing Oracle Virtual Box. Two virtual machines, <b>DC</b> and <b>Client 1</b>, were created with server 19 and Windows 10 installed, respectively.
 
-- <b>PowerShell</b> 
-- <b>Diskpart</b>
+<h4>DC Virtual Machine</h4>
+Acts as the main domain controller and hosts the active directory. Consists of two network interfaces, one connected to the internet and the other as an internal network. The internal network is assigned to IP addressing through the set up. Furthermore, NAT, routing and DHCP are installed in the virtual machine as well for smooth network operation.
 
-<h2>Environments Used </h2>
-
-- <b>Windows 10</b> (21H2)
+<h4>Client 1 Virtual Machine</h4>
+Used for experimentation with main active directory as a user. Connected to the virtual machine internal network.
 
 <h2>Program walk-through:</h2>
 
