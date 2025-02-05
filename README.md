@@ -11,7 +11,7 @@
 
 
 <h3>Overview</h3>
-Create a home lab set up with an active running directory utilizing Oracle Virtual Box. Two virtual machines, <b>DC</b> and <b>Client 1</b>, were created with server 19 and Windows 10 installed, respectively.
+Create a home lab set up with running active directory utilizing Oracle Virtual Box. Two virtual machines, <b>DC</b> and <b>Client 1</b>, were created with server 19 and Windows 10 installed, respectively.
 
 <h4>DC Virtual Machine</h4>
 Acts as the main domain controller and hosts the active directory. Consists of two network interfaces, one connected to the internet and the other as an internal network. The internal network is assigned to IP addressing through the set up. Furthermore, NAT, routing and DHCP are installed in the virtual machine as well for smooth network operation.
