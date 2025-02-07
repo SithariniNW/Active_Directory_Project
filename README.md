@@ -25,7 +25,14 @@ The first VM to be set up is the DC machine with Windows Server 2019 ISO install
 <br> Furthermore, instead of the default one network adapter connected to the internet, an additional network adapter to accommodate the internal network was set up.
 
 <h3>Network Configuration</h3>
-Both machines are automatically connected to the internet
+Both machines are automatically connected to the internet through the main network adapter, which will assign IP addresses through the home router DHCP. 
+
+<br> However, for the internal network in the DC machine IP addressing had to be manually assigned using Windows network settings as follows,
+
+<br> <b> IP: 172.16.0.1
+<br> <b> Mask: 255.255.255.0
+<br> <b> DNS: 172.0.0.1
+
 
 <h2>Program walk-through:</h2>
 
