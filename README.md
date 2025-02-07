@@ -11,13 +11,21 @@
 
 
 <h3>Overview</h3>
-Create a home lab set up with running active directory utilizing Oracle Virtual Box. Two virtual machines, <b>DC</b> and <b>Client 1</b>, were created with server 19 and Windows 10 installed, respectively.
+Create a home lab set up with running active directory utilizing Oracle Virtual Box. Two virtual machines, <b>DC</b> and <b>Client 1</b>, were created with Windows server 2019 ISO and Windows 10 installed, respectively.
 
 <h4>DC Virtual Machine</h4>
-Acts as the main domain controller and hosts the active directory. Consists of two network interfaces, one connected to the internet and the other as an internal network. The internal network is assigned to IP addressing through the set up. Furthermore, NAT, routing and DHCP are installed in the virtual machine as well for smooth network operation.
+Acts as the main domain controller and hosts the active directory. Consists of two network interfaces, one connected to the internet and the other as an internal network. The internal network is assigned to IP addressing through the set up. Furthermore, NAT, routing, and DHCP are installed in the virtual machine for smooth network operation.
 
 <h4>Client 1 Virtual Machine</h4>
-Used for experimentation with main active directory as a user. Connected to the virtual machine internal network.
+Used for experimentation with the main active directory as a user. Connected to the virtual machine's internal network.
+
+<h3>VM Setup</h3>
+The first VM to be set up is the DC machine with Windows Server 2019 ISO installed. Even though the preferred base memory of the system was set to 2GB (2048MB), due to partition issues in the hard disk, the memory had to be increased to 11450MB.
+
+<br> Furthermore, instead of the default one network adapter connected to the internet, an additional network adapter to accommodate the internal network was set up.
+
+<h3>Network Configuration</h3>
+Both machines are automatically connected to the internet
 
 <h2>Program walk-through:</h2>
 
