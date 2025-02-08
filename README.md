@@ -33,6 +33,9 @@ Both machines are automatically connected to the internet through the main netwo
 <br> <b> Mask: 255.255.255.0
 <br> <b> DNS: 172.0.0.1
 
+<h3>Active Directory Installation</h3>
+Using the server manager dashboard of the DC Virtual Machine, an active directory named DC was created 
+
 
 <h2>Program walk-through:</h2>
 
