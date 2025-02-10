@@ -46,3 +46,6 @@ After the creation, the post-deployment configuration is done by adding a forest
 Afterwards, a dedicated domain admin account named <b> a-SWewalwala </b> is created under the organizational unit <b> /ADMIN </b>
 
 <br> <img src="Images/Screenshot 2025-02-08 160845.png" height="70%" width="70%" alt="Directory creation"/>
+
+<h3>Active Directory Installation</h3>
+
