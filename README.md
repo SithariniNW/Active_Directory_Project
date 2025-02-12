@@ -1,7 +1,7 @@
-<h1 style="color:blue"> Active Directory Home Lab</h1>
+<h1 style="color:blue;"> Active Directory Home Lab</h1>
 
 
-<h3>Resources Used</h3>
+<h3 Resources Used </h3>
 <ul type="circle">
  <li>Oracle Virtual Box</li>
  <li>Windows 10 ISO</li>
@@ -25,6 +25,10 @@ Used for experimentation with the main active directory as a user. Connected to 
 The first VM to be set up is the DC machine with Windows Server 2019 ISO installed. Even though the preferred base memory of the system was set to 2GB (2048MB), due to partition issues in the hard disk, the memory had to be increased to 11450MB.
 
 <br> Furthermore, instead of the default one network adapter connected to the internet, an additional network adapter to accommodate the internal network was set up.
+
+<br> The second VM, CLIENT1 is created after the network configuration and installation of active directory in DC.
+
+<br> The second VM contains Windows 10 ISO with 4 processor cores, 2GB base memory and one network interface that connects to the internal VM network.
 
 <h3>Network Configuration</h3>
 Both machines are automatically connected to the internet through the main network adapter, which will assign IP addresses through the home router DHCP. 
@@ -63,5 +67,72 @@ The IP address of the internal network of the DC machine <b> 172.16.0.1 </b> is 
 
 <br> <img src="Images/Screenshot 2025-02-08 170235.png" height="50%" width="50%" alt="Directory creation"/>
 
+<h3>Generation of users</h3>
+
+To visualize the functionality of the domain controller and active directory, 1k users are generated and created within the active directory. This is achieved with the use of the following power shell script,
+
+```
+$PASSWORD_FOR_USERS   = "Password123"
+$USER_FIRST_LAST_LIST = Get-Content .\names.txt
+
+$password = ConvertTo-SecureString $PASSWORD_FOR_USERS -AsPlainText -Force
+New-ADOrganizationalUnit -Name _USERS -ProtectedFromAccidentalDeletion $false
+
+foreach ($n in $USER_FIRST_LAST_LIST) {
+    $first = $n.Split(" ")[0].ToLower()
+    $last = $n.Split(" ")[1].ToLower()
+    $username = "$($first.Substring(0,1))$($last)".ToLower()
+    Write-Host "Creating user: $($username)" -BackgroundColor Black -ForegroundColor Cyan
+    
+    New-AdUser -AccountPassword $password `
+               -GivenName $first `
+               -Surname $last `
+               -DisplayName $username `
+               -Name $username `
+               -EmployeeID $username `
+               -PasswordNeverExpires $true `
+               -Path "ou=_USERS,$(([ADSI]`"").distinguishedName)" `
+               -Enabled $true
+}
+
+```
+<br> <img src="Images/Screenshot 2025-02-08 174631.png" height="50%" width="50%" alt="Directory creation"/>
+
+<br> <img src="Images/Screenshot 2025-02-08 175854.png" height="50%" width="50%" alt="Directory creation"/>
+
+<h3>Testing CLIENT1 connectivity</h3>
+
+Client VM was configured with one network adapter connected to the internal VM network that connects it to the main Domain Controller.
+
+<br> If connected properly, the default gateway of the Client 1 machine should be the IP address of DC as it accesses the internet through DC. This could be verified by using the <b> ipconfig </b> command on the command prompt of the client machine. 
+
+<br> The client is also able to reach the internet through the internal network as the ping to <b> www.google.com </b> is successful.
+
+<br> <img src="Images/Screenshot 2025-02-09 164142.png" height="50%" width="50%" alt="Directory creation"/>
+
+<br> The final alteration that is done to the client machine is to make it a member of mydomain.com active directory.
+
+<br> <img src="Images/Screenshot 2025-02-09 164445.png" height="50%" width="50%" alt="Directory creation"/>
+
+<h3>Conclusion</h3>
+
+This active directory home lab successfully demonstrated the setup and configuration of a domain controller using <b> Oracle VirtualBox, Windows Server 2019, and Windows 10 </b>. By integrating Active Directory, NAT, and DHCP, a functional internal network was created, allowing the Client 1 VM to communicate with the domain controller and access the internet.
+
+<br> Additionally, the deployment of 1,000 users using a PowerShell script highlights automation capabilities within Active Directory, showcasing its scalability for enterprise environments. The final validation of network connectivity and domain membership confirms that the setup is fully operational.
+
+<h3>Reflection</h3>
+
+This lab served as a foundational exercise for me to understand the active directory infrastructure, network configuration and enterprise-level user management of Windows-based computers. 
+
+<h5> Skills obtained </h5>
+<ul type="circle">
+ <li>Active Directory Configuaration</li>
+ <li>Network configuration of DHCP, routing and NAT</li>
+ <li>Power shell scripting </li>
+</ul>
+
+<h5> References </h5>
+https://www.microsoft.com/en-au/software-download/windows10
+https://www.youtube.com/watch?v=MHsI8hJmggI&t=1829s
 
 
