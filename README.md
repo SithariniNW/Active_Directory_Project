@@ -133,6 +133,6 @@ This lab served as a foundational exercise for me to understand the active direc
 
 <h5> References </h5>
 https://www.microsoft.com/en-au/software-download/windows10
-https://www.youtube.com/watch?v=MHsI8hJmggI&t=1829s
+<br> https://www.youtube.com/watch?v=MHsI8hJmggI&t=1829s
 
 
